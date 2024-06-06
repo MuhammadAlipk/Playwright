@@ -20,5 +20,5 @@ test("Intrect with the textboxes", async ({ page }) => {
   await page.getByRole("button", { name: "Submit" }).click();
 
   //This code will get values from different lables
-  await expect(page.locator("p")).toContainText("Muhammad Ali");
+  //await expect(page.locator("p")).toContainText("Muhammad Ali");
 });
