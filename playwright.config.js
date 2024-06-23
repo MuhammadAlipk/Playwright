@@ -12,6 +12,10 @@ const { defineConfig, devices } = require("@playwright/test");
  */
 module.exports = defineConfig({
   testDir: "./e2e",
+  /*this filter run only test cases that are related to POM*/
+  //testMatch : "test/test-cases/*.spec.js",
+  /*This is the directory to save test reports and other artifacts like screens shots and traces */
+  outputDir: "test-results",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,12 +28,25 @@ module.exports = defineConfig({
   reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
+    screenshot:'only-on-failure',
+
+    video: 'on-first-retry',
+
+    actionTimeout: 5000,
+
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    
   },
+
+  /*expect : {
+
+    timeout : 30000
+  },*/
 
   /* Configure projects for major browsers */
   projects: [
