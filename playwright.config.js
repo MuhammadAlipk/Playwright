@@ -17,7 +17,7 @@ module.exports = defineConfig({
   /*This is the directory to save test reports and other artifacts like screens shots and traces */
   outputDir: "test-results",
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -28,25 +28,19 @@ module.exports = defineConfig({
   reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    screenshot: "only-on-failure",
 
-    screenshot:'only-on-failure',
-
-    video: 'on-first-retry',
+    video: "on-first-retry",
 
     actionTimeout: 5000,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: "https://tutorialsninja.com/demo/",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
-    
+    navigationTimeout: 60000,
   },
-
-  /*expect : {
-
-    timeout : 30000
-  },*/
 
   /* Configure projects for major browsers */
   projects: [
