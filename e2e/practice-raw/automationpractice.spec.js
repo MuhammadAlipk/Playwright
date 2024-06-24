@@ -29,3 +29,5 @@ test("Place an order with login", async ({ page }) => {
 
   await page.locator("xpath=//a[text()='Orange']").click();
 });
+
+
